@@ -1,0 +1,3 @@
+[submodule "chainer-char-rnn"]
+	path = chainer-char-rnn
+	url = https://github.com/yusuketomoto/chainer-char-rnn.git
