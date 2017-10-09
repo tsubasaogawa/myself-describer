@@ -194,21 +194,32 @@ def main():
                         help='Number of LSTM units in each layer')
     parser.add_argument('--model', '-m', default='model.npz',
                         help='Model file name to serialize')
+    parser.add_argument('--dataset', '-d', default='',
+                        help='Dataset files (train, valid, test) which divided by comma. ex) train.txt,valid.txt,test.txt')
     args = parser.parse_args()
 
-    # Load the Penn Tree Bank long word sequence dataset
-    train, val, test = chainer.datasets.get_ptb_words()
+    data = {}
+    if args.dataset == '' or args.dataset.count(',') != 3:
+      # Load the Penn Tree Bank long word sequence dataset
+      data['train'], data['val'], data['test'] = chainer.datasets.get_ptb_words()
+    else:
+      # Load user defined dataset
+      dataset_files['train'], dataset_files['val'], dataset_files['test'] = args.dataset.split(',')
+      for key in dataset_files.keys():
+        with open(dataset_files[key], 'r') as f:
+          data[key] = f.read()
+
     n_vocab = max(train) + 1  # train is just an array of integers
     print('#vocab =', n_vocab)
 
     if args.test:
-        train = train[:100]
-        val = val[:100]
-        test = test[:100]
+        data['train'] = data['train'][:100]
+        data['val'] = data['val'][:100]
+        data['test'] = data['test'][:100]
 
-    train_iter = ParallelSequentialIterator(train, args.batchsize)
-    val_iter = ParallelSequentialIterator(val, 1, repeat=False)
-    test_iter = ParallelSequentialIterator(test, 1, repeat=False)
+    train_iter = ParallelSequentialIterator(data['train'], args.batchsize)
+    val_iter = ParallelSequentialIterator(data['val'], 1, repeat=False)
+    test_iter = ParallelSequentialIterator(data['test'], 1, repeat=False)
 
     # Prepare an RNNLM model
     rnn = RNNForLM(n_vocab, args.unit)
