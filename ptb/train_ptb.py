@@ -199,17 +199,18 @@ def main():
     args = parser.parse_args()
 
     data = {}
-    if args.dataset == '' or args.dataset.count(',') != 3:
+    if args.dataset == '' or args.dataset.count(',') != 2:
       # Load the Penn Tree Bank long word sequence dataset
       data['train'], data['val'], data['test'] = chainer.datasets.get_ptb_words()
     else:
       # Load user defined dataset
+      dataset_files = {}
       dataset_files['train'], dataset_files['val'], dataset_files['test'] = args.dataset.split(',')
       for key in dataset_files.keys():
-        with open(dataset_files[key], 'r') as f:
+        with open(dataset_files[key], 'r', encoding='utf-8') as f:
           data[key] = f.read()
 
-    n_vocab = max(train) + 1  # train is just an array of integers
+    n_vocab = max(data['train']) + 1  # train is just an array of integers
     print('#vocab =', n_vocab)
 
     if args.test:
