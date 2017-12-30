@@ -1,0 +1,14 @@
+{% extends "layout.html" %}
+{% block content %}
+<div>
+  <span id="generated_text">{{ generated_text }}</span>
+</div>
+
+<div>
+  <form action="/" method="post">
+    <input type="text" name="start_word">
+    <input type="hidden" name="word_num" value="5">
+    <input type="submit">
+  </form>
+</div>
+{% endblock %}
