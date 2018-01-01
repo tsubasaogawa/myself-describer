@@ -2,10 +2,34 @@
 <html>
 <head>
 <title>{{ title }}</title>
+<link rel="stylesheet" href="https://unpkg.com/purecss@1.0.0/build/pure-min.css" integrity="sha384-nn4HPE8lTHyVtfCBi5yW9d20FjT8BJwUXyWZT9InLYax14RDjBj46LmSztkmNP9w" crossorigin="anonymous">
+<link rel="stylesheet" href="https://unpkg.com/purecss@1.0.0/build/grids-responsive-min.css">
+<style type="text/css">
+@import url(https://fonts.googleapis.com/earlyaccess/roundedmplus1c.css);
+body {
+  margin: 0px 200px;
+  font-family: 'Rounded Mplus 1c';
+  font-weight: 200;
+}
+#header a {
+  text-decoration: none;
+  color: #000000;
+  font-size: 3em;
+}
+#generated_text p {
+  background-color: #f8f8f8;
+  font-weight: bold;
+}
+</style>
+<meta name="viewport" content="width=device-width, initial-scale=1">
 </head>
 <body>
-<h1>myself-describer</h1>
-{% block content %}
-{% endblock %}
+<div id="header">
+  <h1><a href="/">{{ title }}</a></h1>
+</div>
+<div id="content">
+  {% block content %}
+  {% endblock %}
+</div>
 </body>
 </html>

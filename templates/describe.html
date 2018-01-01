@@ -1,14 +1,29 @@
 {% extends "layout.html" %}
 {% block content %}
-<div>
-  <span id="generated_text">{{ generated_text }}</span>
+<div id="generated_text">
+  <p>{{ generated_text }}</p>
 </div>
 
-<div>
-  <form action="/" method="post">
-    <input type="text" name="start_word">
-    <input type="hidden" name="word_num" value="5">
-    <input type="submit">
+<div id="formgroup">
+  <form action="/" method="post" class="pure-form pure-form-aligned">
+    <fieldset>
+      <div class="pure-control-group">
+        <label for="start">start with:</label>
+        <input type="text" name="start_word" placeholder="e.g. 今日">
+      </div>
+      <div class="pure-control-group">
+        <label for="word"># of word:</label>
+        <select name="word_num" id="word_num">
+          <option>5</option>
+          <option>10</option>
+          <option>15</option>
+          <option>20</option>
+        </select>
+      </div>
+      <div class="pure-controls">
+        <button type="submit" class="pure-button pure-button-primary">Make a sentence</button>
+      </div>
+    </fieldset>
   </form>
 </div>
 {% endblock %}
