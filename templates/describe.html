@@ -8,17 +8,19 @@
   <form action="/" method="post" class="pure-form pure-form-aligned">
     <fieldset>
       <div class="pure-control-group">
-        <label for="start">start with:</label>
-        <input type="text" name="start_word" placeholder="e.g. 今日">
+        <!-- <label for="start">start with:</label>
+        <input type="text" name="start_word" placeholder="e.g. 今日"> -->
+        {{ form.start_word() }}
       </div>
       <div class="pure-control-group">
-        <label for="word"># of word:</label>
+        <!-- <label for="word"># of word:</label>
         <select name="word_num" id="word_num">
           <option>5</option>
           <option>10</option>
           <option>15</option>
           <option>20</option>
-        </select>
+        </select> -->
+        {{ form.word_num() }}
       </div>
       <div class="pure-controls">
         <button type="submit" class="pure-button pure-button-primary">Make a sentence</button>

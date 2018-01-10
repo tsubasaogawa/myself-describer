@@ -2,6 +2,7 @@
 
 from flask import Flask, render_template, request
 from text_generator import TextGenerator
+import TextForm
 
 app = Flask(__name__)
 model_file = './myself.model'
@@ -10,10 +11,14 @@ host = '0.0.0.0'
 
 @app.route('/', methods=['POST', 'GET'])
 def describe():
+  form = TextForm(request.form)
+  if not form.validate():
+    sys.exit(1)
+
   generated_text = ''
   if request.method == 'POST':
-    start_word = request.form['start_word']
-    word_num = request.form['word_num']
+    start_word = form.start_word.data
+    word_num = form.word_num.data
     generator = TextGenerator(model_file, start_word, word_num)
     generated_text = generator.execute()
     if generated_text is None:
