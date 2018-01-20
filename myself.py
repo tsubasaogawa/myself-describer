@@ -8,7 +8,7 @@ import re, glob
 
 def get_model_information():
   base = os.path.dirname(os.path.abspath(__file__))
-  model_files = glob.glob('{}/model_iter_*'.format(base))
+  model_files = glob.glob('{}/model/model_iter_*'.format(base))
   if not len(model_files):
     raise FileNotFoundError('no model file found')
 
