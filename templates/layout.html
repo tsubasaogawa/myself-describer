@@ -32,7 +32,12 @@ body {
   {% endblock %}
 </div>
 <div id="footer">
-  iteration: {{ model_iter }}
+  Model Information
+  <ul id="model_information">
+    <li>modified: {{ model['modified'] }}</li>
+    <li># of iteration: {{ model['iter'] }}</li>
+    <li>size: {{ model['size'] }}</li?
+  </ul>
 </div>
 </body>
 </html>

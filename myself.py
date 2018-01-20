@@ -5,6 +5,7 @@ from text_generator import TextGenerator
 from text_form import TextForm
 import sys, os
 import re, glob
+from datetime import date
 
 def get_model_information():
   base = os.path.dirname(os.path.abspath(__file__))
@@ -15,7 +16,14 @@ def get_model_information():
   latest_model_file = model_files[-1]
   iteration = re.search(r'model_iter_(\d+)', latest_model_file)
 
-  return { 'name': latest_model_file, 'iter': iteration.group(1) }
+  modified = date.fromtimestamp(os.path.getmtime(latest_model_file)).strftime('%Y-%m-%d')
+  size = os.path.getsize(latest_model_file)
+  return {
+    'name': latest_model_file,
+    'iter': iteration.group(1),
+    'modified': modified,
+    'size': size
+  }
 
 app = Flask(__name__)
 title = 'virtual-ogawa'
@@ -43,7 +51,7 @@ def describe():
       title=title,
       generated_text=generated_text,
       form=form,
-      model_iter=model['iter'])
+      model=model)
 
 if __name__ == "__main__":
   app.run(host=host, debug=True)
