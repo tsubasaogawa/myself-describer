@@ -14,11 +14,286 @@ body {
 #header a {
   text-decoration: none;
   color: #000000;
-  font-size: 3em;
+  font-size: calc(150% + 0.5vw);
 }
 #generated_text p {
   background-color: #f8f8f8;
   font-weight: bold;
+}
+#start_word, #word_num, #submit{
+  width: 150px;
+}
+#cssload {
+  visibility: hidden;
+  display: inline-block;
+  margin-left: 45px;
+}
+#submit-block > .pure-control-group {
+  display: inline-block;
+}
+</style>
+<style type="text/css">
+.cssload-container {
+    position: absolute;
+    // left: 50%;
+    transform: translate(-50%, -50%);
+        -o-transform: translate(-50%, -50%);
+        -ms-transform: translate(-50%, -50%);
+        -webkit-transform: translate(-50%, -50%);
+        -moz-transform: translate(-50%, -50%);
+}
+
+.cssload-thing {
+    height: 7px;
+    width: 1px;
+    background: rgb(242,242,242);
+    position: absolute;
+    animation: somecssload-thing_maybe_cool_idk 2.3s infinite ease;
+        -o-animation: somecssload-thing_maybe_cool_idk 2.3s infinite ease;
+        -ms-animation: somecssload-thing_maybe_cool_idk 2.3s infinite ease;
+        -webkit-animation: somecssload-thing_maybe_cool_idk 2.3s infinite ease;
+        -moz-animation: somecssload-thing_maybe_cool_idk 2.3s infinite ease;
+}
+.cssload-thing:nth-child(1) {
+    transform: rotate(30deg);
+        -o-transform: rotate(30deg);
+        -ms-transform: rotate(30deg);
+        -webkit-transform: rotate(30deg);
+        -moz-transform: rotate(30deg);
+    transform-origin: 50% -200%;
+        -o-transform-origin: 50% -200%;
+        -ms-transform-origin: 50% -200%;
+        -webkit-transform-origin: 50% -200%;
+        -moz-transform-origin: 50% -200%;
+    animation-delay: 0.29s;
+        -o-animation-delay: 0.29s;
+        -ms-animation-delay: 0.29s;
+        -webkit-animation-delay: 0.29s;
+        -moz-animation-delay: 0.29s;
+}
+.cssload-thing:nth-child(2) {
+    transform: rotate(60deg);
+        -o-transform: rotate(60deg);
+        -ms-transform: rotate(60deg);
+        -webkit-transform: rotate(60deg);
+        -moz-transform: rotate(60deg);
+    transform-origin: 50% -200%;
+        -o-transform-origin: 50% -200%;
+        -ms-transform-origin: 50% -200%;
+        -webkit-transform-origin: 50% -200%;
+        -moz-transform-origin: 50% -200%;
+    animation-delay: 0.58s;
+        -o-animation-delay: 0.58s;
+        -ms-animation-delay: 0.58s;
+        -webkit-animation-delay: 0.58s;
+        -moz-animation-delay: 0.58s;
+}
+.cssload-thing:nth-child(3) {
+    transform: rotate(90deg);
+        -o-transform: rotate(90deg);
+        -ms-transform: rotate(90deg);
+        -webkit-transform: rotate(90deg);
+        -moz-transform: rotate(90deg);
+    transform-origin: 50% -200%;
+        -o-transform-origin: 50% -200%;
+        -ms-transform-origin: 50% -200%;
+        -webkit-transform-origin: 50% -200%;
+        -moz-transform-origin: 50% -200%;
+    animation-delay: 0.86s;
+        -o-animation-delay: 0.86s;
+        -ms-animation-delay: 0.86s;
+        -webkit-animation-delay: 0.86s;
+        -moz-animation-delay: 0.86s;
+}
+.cssload-thing:nth-child(4) {
+    transform: rotate(120deg);
+        -o-transform: rotate(120deg);
+        -ms-transform: rotate(120deg);
+        -webkit-transform: rotate(120deg);
+        -moz-transform: rotate(120deg);
+    transform-origin: 50% -200%;
+        -o-transform-origin: 50% -200%;
+        -ms-transform-origin: 50% -200%;
+        -webkit-transform-origin: 50% -200%;
+        -moz-transform-origin: 50% -200%;
+    animation-delay: 1.15s;
+        -o-animation-delay: 1.15s;
+        -ms-animation-delay: 1.15s;
+        -webkit-animation-delay: 1.15s;
+        -moz-animation-delay: 1.15s;
+}
+.cssload-thing:nth-child(5) {
+    transform: rotate(150deg);
+        -o-transform: rotate(150deg);
+        -ms-transform: rotate(150deg);
+        -webkit-transform: rotate(150deg);
+        -moz-transform: rotate(150deg);
+    transform-origin: 50% -200%;
+        -o-transform-origin: 50% -200%;
+        -ms-transform-origin: 50% -200%;
+        -webkit-transform-origin: 50% -200%;
+        -moz-transform-origin: 50% -200%;
+    animation-delay: 1.44s;
+        -o-animation-delay: 1.44s;
+        -ms-animation-delay: 1.44s;
+        -webkit-animation-delay: 1.44s;
+        -moz-animation-delay: 1.44s;
+}
+.cssload-thing:nth-child(6) {
+    transform: rotate(180deg);
+        -o-transform: rotate(180deg);
+        -ms-transform: rotate(180deg);
+        -webkit-transform: rotate(180deg);
+        -moz-transform: rotate(180deg);
+    transform-origin: 50% -200%;
+        -o-transform-origin: 50% -200%;
+        -ms-transform-origin: 50% -200%;
+        -webkit-transform-origin: 50% -200%;
+        -moz-transform-origin: 50% -200%;
+    animation-delay: 1.73s;
+        -o-animation-delay: 1.73s;
+        -ms-animation-delay: 1.73s;
+        -webkit-animation-delay: 1.73s;
+        -moz-animation-delay: 1.73s;
+}
+.cssload-thing:nth-child(7) {
+    transform: rotate(210deg);
+        -o-transform: rotate(210deg);
+        -ms-transform: rotate(210deg);
+        -webkit-transform: rotate(210deg);
+        -moz-transform: rotate(210deg);
+    transform-origin: 50% -200%;
+        -o-transform-origin: 50% -200%;
+        -ms-transform-origin: 50% -200%;
+        -webkit-transform-origin: 50% -200%;
+        -moz-transform-origin: 50% -200%;
+    animation-delay: 2.01s;
+        -o-animation-delay: 2.01s;
+        -ms-animation-delay: 2.01s;
+        -webkit-animation-delay: 2.01s;
+        -moz-animation-delay: 2.01s;
+}
+.cssload-thing:nth-child(8) {
+    transform: rotate(240deg);
+        -o-transform: rotate(240deg);
+        -ms-transform: rotate(240deg);
+        -webkit-transform: rotate(240deg);
+        -moz-transform: rotate(240deg);
+    transform-origin: 50% -200%;
+        -o-transform-origin: 50% -200%;
+        -ms-transform-origin: 50% -200%;
+        -webkit-transform-origin: 50% -200%;
+        -moz-transform-origin: 50% -200%;
+    animation-delay: 2.3s;
+        -o-animation-delay: 2.3s;
+        -ms-animation-delay: 2.3s;
+        -webkit-animation-delay: 2.3s;
+        -moz-animation-delay: 2.3s;
+}
+.cssload-thing:nth-child(9) {
+    transform: rotate(270deg);
+        -o-transform: rotate(270deg);
+        -ms-transform: rotate(270deg);
+        -webkit-transform: rotate(270deg);
+        -moz-transform: rotate(270deg);
+    transform-origin: 50% -200%;
+        -o-transform-origin: 50% -200%;
+        -ms-transform-origin: 50% -200%;
+        -webkit-transform-origin: 50% -200%;
+        -moz-transform-origin: 50% -200%;
+    animation-delay: 2.59s;
+        -o-animation-delay: 2.59s;
+        -ms-animation-delay: 2.59s;
+        -webkit-animation-delay: 2.59s;
+        -moz-animation-delay: 2.59s;
+}
+.cssload-thing:nth-child(10) {
+    transform: rotate(300deg);
+        -o-transform: rotate(300deg);
+        -ms-transform: rotate(300deg);
+        -webkit-transform: rotate(300deg);
+        -moz-transform: rotate(300deg);
+    transform-origin: 50% -200%;
+        -o-transform-origin: 50% -200%;
+        -ms-transform-origin: 50% -200%;
+        -webkit-transform-origin: 50% -200%;
+        -moz-transform-origin: 50% -200%;
+    animation-delay: 2.88s;
+        -o-animation-delay: 2.88s;
+        -ms-animation-delay: 2.88s;
+        -webkit-animation-delay: 2.88s;
+        -moz-animation-delay: 2.88s;
+}
+.cssload-thing:nth-child(11) {
+    transform: rotate(330deg);
+        -o-transform: rotate(330deg);
+        -ms-transform: rotate(330deg);
+        -webkit-transform: rotate(330deg);
+        -moz-transform: rotate(330deg);
+    transform-origin: 50% -200%;
+        -o-transform-origin: 50% -200%;
+        -ms-transform-origin: 50% -200%;
+        -webkit-transform-origin: 50% -200%;
+        -moz-transform-origin: 50% -200%;
+    animation-delay: 3.16s;
+        -o-animation-delay: 3.16s;
+        -ms-animation-delay: 3.16s;
+        -webkit-animation-delay: 3.16s;
+        -moz-animation-delay: 3.16s;
+}
+.cssload-thing:nth-child(12) {
+    transform: rotate(360deg);
+        -o-transform: rotate(360deg);
+        -ms-transform: rotate(360deg);
+        -webkit-transform: rotate(360deg);
+        -moz-transform: rotate(360deg);
+    transform-origin: 50% -200%;
+        -o-transform-origin: 50% -200%;
+        -ms-transform-origin: 50% -200%;
+        -webkit-transform-origin: 50% -200%;
+        -moz-transform-origin: 50% -200%;
+    animation-delay: 3.45s;
+        -o-animation-delay: 3.45s;
+        -ms-animation-delay: 3.45s;
+        -webkit-animation-delay: 3.45s;
+        -moz-animation-delay: 3.45s;
+}
+
+
+
+@keyframes somecssload-thing_maybe_cool_idk {
+    50% {
+        background: rgb(0,0,0);
+        transform-origin: 50% -170%;
+    }
+}
+
+@-o-keyframes somecssload-thing_maybe_cool_idk {
+    50% {
+        background: rgb(0,0,0);
+        -o-transform-origin: 50% -170%;
+    }
+}
+
+@-ms-keyframes somecssload-thing_maybe_cool_idk {
+    50% {
+        background: rgb(0,0,0);
+        -ms-transform-origin: 50% -170%;
+    }
+}
+
+@-webkit-keyframes somecssload-thing_maybe_cool_idk {
+    50% {
+        background: rgb(0,0,0);
+        -webkit-transform-origin: 50% -170%;
+    }
+}
+
+@-moz-keyframes somecssload-thing_maybe_cool_idk {
+    50% {
+        background: rgb(0,0,0);
+        -moz-transform-origin: 50% -170%;
+    }
 }
 </style>
 <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -26,6 +301,7 @@ body {
 window.onload = function() {
   document.getElementById('submit').addEventListener("click", function() {
     document.getElementById('submit').disabled = true;
+    document.getElementById('cssload').style.visibility = 'visible';
   });
 }
 </script>
