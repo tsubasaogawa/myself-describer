@@ -5,15 +5,40 @@ from text_generator import TextGenerator
 from text_form import TextForm
 import sys, os
 import re, glob
+import requests
 from datetime import date
 
-def get_model_information():
-  base = os.path.dirname(os.path.abspath(__file__))
-  model_files = glob.glob('{}/model/model_iter_*'.format(base))
-  if not len(model_files):
-    raise FileNotFoundError('no model file found')
 
-  latest_model_file = model_files[-1]
+app = Flask(__name__)
+title = 'virtual-ogawa'
+host = '0.0.0.0'
+
+model_path = '{}/model'.format(
+  os.path.dirname(os.path.abspath(__file__))
+)
+model_file_glob = '{}/model_iter_*'.format(model_path)
+model_file_url = 'YOUR MODEL FILE URL'
+
+def download_model_file(url):
+  response = requests.get(url)
+  downloaded_path =  '{0}/{1}'.format(model_path, os.path.basename(model_file_url))
+  with open(downloaded_path, 'wb') as f:
+    f.write(response.content)
+
+  print('model downloaded')
+  return downloaded_path
+
+def get_latest_model_file():
+  model_files = glob.glob(model_file_glob)
+  if not len(model_files):
+    file_path = download_model_file(model_file_url)
+    model_files = [file_path]
+    # raise FileNotFoundError('no model file found')
+
+  return model_files[-1]
+
+def get_model_information():
+  latest_model_file = get_latest_model_file()
   iteration = re.search(r'model_iter_(\d+)', latest_model_file)
 
   modified = date.fromtimestamp(os.path.getmtime(latest_model_file)).strftime('%Y-%m-%d')
@@ -25,9 +50,7 @@ def get_model_information():
     'size': size
   }
 
-app = Flask(__name__)
-title = 'virtual-ogawa'
-host = '0.0.0.0'
+# ------------------------------ #
 
 @app.route('/', methods=['POST', 'GET'])
 def describe():
