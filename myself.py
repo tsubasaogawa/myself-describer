@@ -17,7 +17,7 @@ model_path = '{}/model'.format(
   os.path.dirname(os.path.abspath(__file__))
 )
 model_file_glob = '{}/model_iter_*'.format(model_path)
-model_file_url = 'YOUR MODEL FILE URL'
+model_file_url = os.environ.get('MODEL_FILE_URL')
 
 def download_model_file(url):
   response = requests.get(url)
